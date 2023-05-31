@@ -6,6 +6,9 @@ return {
   { import = "astrocommunity.colorscheme.rose-pine" },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.motion.mini-surround" },
+  { import = "astrocommunity.motion.harpoon" },
+  { import = "astrocommunity.editing-support.todo-comments-nvim" },
   {
     "m4xshen/smartcolumn.nvim",
     opts = {
