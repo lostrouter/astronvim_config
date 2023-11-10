@@ -4,7 +4,7 @@ return {
     config = function()
       require("dap").adapters["pwa-node"] = {
         type = "server",
-        host = "localhost",
+        host = "127.0.0.1",
         port = "${port}",
         executable = {
           command = "node",
@@ -17,7 +17,7 @@ return {
         },
       }
 
-      for _, language in ipairs({ "typescript", "javascript" }) do
+      for _, language in ipairs({ "typescript", "javascript", "typescriptreact" }) do
         require("dap").configurations[language] = {
           {
             type = "pwa-node",
@@ -36,11 +36,28 @@ return {
           {
             type = "pwa-node",
             request = "launch",
-            name = "Debug Tests",
+            name = "Debug Tests vitest",
             -- trace = true, -- include debugger info
             runtimeExecutable = "node",
             runtimeArgs = {
               "./node_modules/vitest/vitest.mjs",
+            },
+            rootPath = "${workspaceFolder}",
+            cwd = "${workspaceFolder}",
+            console = "integratedTerminal",
+            internalConsoleOptions = "neverOpen",
+          },
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Tests jest",
+            -- trace = true, -- include debugger info
+            runtimeExecutable = "node",
+            runtimeArgs = {
+              "./node_modules/.bin/jest",
+              "--no-coverage",
+              "--runInBand",
+              "${file}"
             },
             rootPath = "${workspaceFolder}",
             cwd = "${workspaceFolder}",
